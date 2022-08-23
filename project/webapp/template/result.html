@@ -1,0 +1,53 @@
+<html lang="en">
+  <head>
+    <title>Fifa 22 Player's Search Engine</title>
+    <link rel="icon" href="https://firebasestorage.googleapis.com/v0/b/greenfather-d3514.appspot.com/o/fifa_logo.png?alt=media&token=cc866cf2-0570-4eb0-ac18-f4e3dfa27b09">
+<style>
+body {
+  background-image: url('https://media.contentapi.ea.com/content/dam/ea/fifa/fifa-22/fifa-22-shared-assets/common/fifa-22-bg-asset.png.adapt.320w.png');
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: 100% 100%; 
+          }
+</style>
+  </head>
+  <body>
+      <center>
+      <h1>Fifa 22 Player's Search Engine</h1>
+          
+          <table border=1>
+                <tr>
+                    <td>Face</td>
+                    <td>Name</td>
+                    <td>Age</td>
+                    <td>Overall Fifa Rating</td>
+                    <td>Transfer Price</td>
+                    <td>Annual Salary</td>
+
+                </tr>
+                {% for data in results %}
+                <tr>
+                    <td><img src="{{data.player_face_url}}" width="200px"/></td>
+                    <td>{{ data.long_name }}</td>
+                    <td>{{ data.player_age }}</td>
+                    <td>{{ data.overall }}</td>
+                    <td>{{ data.value }}</td>
+                    <td>{{ data.wage}}</td>
+
+                   
+                </tr>
+              {% else %}
+                    <tr>
+                        <td colspan=5><center><i>No data (empty)</i></center></td>
+                    </tr>
+                {% endfor %}
+            </table>
+          
+        <table border="1">
+            <tr>
+                <td colspan=2><center><a href="{{url_for('index')}}" >Search another player?</a></center></td>
+            </tr>
+          </table>
+      </center>
+  </body>      
+</html>
